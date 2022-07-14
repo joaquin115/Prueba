@@ -19,12 +19,12 @@ def inicio(request):
     ultimas = publicaciones[len(publicaciones)-4:len(publicaciones)-1]
     ultima_publicacion = publicaciones[publicaciones.count()-1]
     total_publicaciones = publicaciones.count()
-    imagenes = Publicaciones.objects.filter(imagen_info__enabled=True)
+    #imagenes = Publicaciones.objects.filter()
 
     usuarios = User.objects.all()        
     total_usuarios = usuarios.count()    
 
-    return render(request, "PruebaFinalApp/index.html", {"publicaciones":ultimas, 'total_usuarios':total_usuarios, 'total_publicaciones':total_publicaciones, 'ultima_publicacion':ultima_publicacion, "url":imagenes[0].imagen.url})
+    return render(request, "PruebaFinalApp/index.html", {"publicaciones":ultimas, 'total_usuarios':total_usuarios, 'total_publicaciones':total_publicaciones, 'ultima_publicacion':ultima_publicacion})#"url":imagenes[1].imagen.url
 
 @login_required
 def publicaciones(request):

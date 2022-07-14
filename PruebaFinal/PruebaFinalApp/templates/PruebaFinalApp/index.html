@@ -14,13 +14,13 @@ Prueba Final - Inicio
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2">{{ultima_publicacion.titulo}}</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">{{ultima_publicacion.descripcion}}</p>
+                                <p class="lead fw-normal text-white-50 mb-4">{{ultima_publicacion.descripcion|slice:180}}...</p>
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Ver mas</a>                                    
                                 </div>
                             </div>
                         </div>
-                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{{url}}" alt="" /></div>
+                        <div class="col-xl-5 col-xxl-6 d-none d-xl-block text-center"><img class="img-fluid rounded-3 my-5" src="{{ultima_publicacion.imagen.url}}" alt="" /></div>
                     </div>
                 </div>
             </header>     
@@ -53,11 +53,11 @@ Prueba Final - Inicio
                         {%for publicacion in publicaciones%}
                         <div class="col-lg-4 mb-5">
                             <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="{{url}}" alt="..." />
+                                <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." />
                                 <div class="card-body p-4">
                                     <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
                                     <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
-                                    <p class="card-text mb-0">{{publicacion.descripcion}}</p>
+                                    <p class="card-text mb-0">{{publicacion.descripcion|slice:120}}...</p>
                                     <br>
                                     <p class="card-text mb-0">{{publicacion.usuario}}</p>
                                     <p class="card-text mb-0">{{publicacion.fecha_viaje}}</p>

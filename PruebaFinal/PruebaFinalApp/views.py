@@ -1,5 +1,8 @@
 from django.forms import model_to_dict
 from django.shortcuts import render, redirect
+from django.http import HttpResponse
+from django.db.models import Q
+import datetime
 
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth import login, logout, authenticate
@@ -18,20 +21,16 @@ def inicio(request):
     publicaciones = Publicaciones.objects.all()
     ultimas = publicaciones[len(publicaciones)-4:len(publicaciones)-1]
     ultima_publicacion = publicaciones[publicaciones.count()-1]
-    total_publicaciones = publicaciones.count()
-    imagenes = Publicaciones.objects.filter(imagen_info__enabled=True)
+    total_publicaciones = publicaciones.count()    
 
     usuarios = User.objects.all()        
     total_usuarios = usuarios.count()    
 
-    return render(request, "PruebaFinalApp/index.html", {"publicaciones":ultimas, 'total_usuarios':total_usuarios, 'total_publicaciones':total_publicaciones, 'ultima_publicacion':ultima_publicacion, "url":imagenes[0].imagen.url})
+    return render(request, "PruebaFinalApp/index.html", {"publicaciones":ultimas, 'total_usuarios':total_usuarios, 'total_publicaciones':total_publicaciones, 'ultima_publicacion':ultima_publicacion})
 
 @login_required
 def publicaciones(request):
-        return render(request, 'PruebaFinalApp/publicaciones.html', {})
-    
-    
-
+        return render(request, 'PruebaFinalApp/publicaciones.html', {})  
 
 def registro(request):
 
@@ -118,25 +117,26 @@ def perfil(request):
     
     return render(request, "PruebaFinalApp/perfil.html",{})
 
-def crear_publicacion(request):
-    if request.method == "POST":
-        publicacion = CrearPublicacion(request.POST)
-        print(publicacion)
 
+def crear_publicacion(request):
+
+    if request.method == "POST":
+        
+        publicacion = CrearPublicacion(request.POST)
+        
         if publicacion.is_valid():
+
             informacion = publicacion.cleaned_data
 
-            publicacion_nueva = Publicaciones(pais=informacion['pais'], titulo=informacion['titulo'], descripcion=informacion['descripcion'], fecha_viaje=informacion['fecha_viaje'])
-
+            publicacion_nueva = Publicaciones(imagen=informacion["imagen"],pais=informacion["pais"], titulo=informacion["titulo"], descripcion=informacion["descripcion"], fecha_viaje=informacion["fecha_viaje"])
             publicacion_nueva.save()
 
-            return redirect ('inicio')
-
-    else:
-
-        publicacion = CrearPublicacion()
-
-        return render(request, 'PruebaFinalApp/crearpublicacion.html', {'publicacion':publicacion})
+            return redirect('inicio')
+        
+        return render(request, "PruebaFinalApp/crearpublicacion.html", {"publicacion":publicacion})
+    
+    publicacion = CrearPublicacion()
+    return render(request, 'PruebaFinalApp/crearpublicacion.html', {'publicacion':publicacion})
 
     
 

@@ -28,9 +28,10 @@ def inicio(request):
 
     return render(request, "PruebaFinalApp/index.html", {"publicaciones":ultimas, 'total_usuarios':total_usuarios, 'total_publicaciones':total_publicaciones, 'ultima_publicacion':ultima_publicacion})
 
-@login_required
 def publicaciones(request):
-        return render(request, 'PruebaFinalApp/publicaciones.html', {})  
+        publicaciones = Publicaciones.objects.all()
+
+        return render(request, "PruebaFinalApp/publicaciones.html", {"publicaciones":publicaciones})
 
 def registro(request):
 
@@ -117,12 +118,11 @@ def perfil(request):
     
     return render(request, "PruebaFinalApp/perfil.html",{})
 
-
 def crear_publicacion(request):
 
     if request.method == "POST":
         
-        publicacion = CrearPublicacion(request.POST)
+        publicacion = CrearPublicacion(request.POST, request.FILES)
         
         if publicacion.is_valid():
 
@@ -138,5 +138,8 @@ def crear_publicacion(request):
     publicacion = CrearPublicacion()
     return render(request, 'PruebaFinalApp/crearpublicacion.html', {'publicacion':publicacion})
 
+def ver_publicaciones(request):
+    
+    return render(request, "PruebaFinalApp/mis_publicaciones.html", {})
     
 

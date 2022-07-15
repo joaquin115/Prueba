@@ -28,7 +28,7 @@ autor, fecha y una imagen (mínimo y obligatorio, puede tener más). *** SEMI PE
 
 ● Inicio: Al momento de ingresar a la app en la ruta base ‘/’. Visualizar el home del blog. LISTO
 
-● Poder crear, editar o borrar páginas del blog. *** PENDIENTE *** MEDIO/DIFICIL
+● Poder crear, editar o borrar páginas del blog. *** PENDIENTE *** (CREAR = RESUELTO) / *** EDITAR-BORRAR PENDIENTE ***
 
 ● Las páginas están formadas por un título, un contenido en editor de texto avanzado
 (ckeditor por ejemplo), una imagen, fecha de posteo de la imagen. *** PENDIENTE *** 

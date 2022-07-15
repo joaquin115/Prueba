@@ -14,7 +14,7 @@ Prueba Final - Inicio
                         <div class="col-lg-8 col-xl-7 col-xxl-6">
                             <div class="my-5 text-center text-xl-start">
                                 <h1 class="display-5 fw-bolder text-white mb-2">{{ultima_publicacion.titulo}}</h1>
-                                <p class="lead fw-normal text-white-50 mb-4">{{ultima_publicacion.descripcion|slice:180}}...</p>
+                                <p class="lead fw-normal text-white-50 mb-4">{{ultima_publicacion.descripcion|slice:180}}...</p>                                
                                 <div class="d-grid gap-3 d-sm-flex justify-content-sm-center justify-content-xl-start">
                                     <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Ver mas</a>                                    
                                 </div>
@@ -50,21 +50,25 @@ Prueba Final - Inicio
                         </div>
                     </div>
                     <div class="row gx-5">
-                        {%for publicacion in publicaciones%}
-                        <div class="col-lg-4 mb-5">
-                            <div class="card h-100 shadow border-0">
-                                <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." />
-                                <div class="card-body p-4">
-                                    <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
-                                    <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
-                                    <p class="card-text mb-0">{{publicacion.descripcion|slice:120}}...</p>
-                                    <br>
-                                    <p class="card-text mb-0">{{publicacion.usuario}}</p>
-                                    <p class="card-text mb-0">{{publicacion.fecha_viaje}}</p>
-                                </div>                                
+                        {%if publicaciones|length == 0 %}
+                        <h1>No hay publicaciones aun...</h1>
+                        {%else%}
+                            {%for publicacion in publicaciones%}
+                            <div class="col-lg-4 mb-5">
+                                <div class="card h-100 shadow border-0">
+                                    <img class="card-img-top" src="{{publicacion.imagen.url}}" alt="..." />
+                                    <div class="card-body p-4">
+                                        <div class="badge bg-primary bg-gradient rounded-pill mb-2">{{publicacion.pais}}</div>
+                                        <a class="text-decoration-none link-dark stretched-link" href="#!"><h5 class="card-title mb-3">{{publicacion.titulo}}</h5></a>
+                                        <p class="card-text mb-0">{{publicacion.descripcion|slice:120}}...</p>
+                                        <br>
+                                        <p class="card-text mb-0">Creado por: </p>
+                                        <p class="card-text mb-0">{{publicacion.fecha_viaje}}</p>
+                                    </div>                                
+                                </div>
                             </div>
-                        </div>
-                        {%endfor%}                        
+                            {%endfor%}
+                        {%endif%}                            
                     </div>
                     <!-- Call to action-->
                     <aside class="bg-primary bg-gradient rounded-3 p-4 p-sm-5 mt-5">

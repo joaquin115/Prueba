@@ -36,5 +36,5 @@ class CrearPublicacion(forms.Form):
     pais = forms.CharField(max_length=50)
     titulo = forms.CharField(max_length=50)
     descripcion = forms.CharField(widget=forms.Textarea())
-    fecha_viaje = forms.DateField()  
+    fecha_viaje = forms.DateField()   
     

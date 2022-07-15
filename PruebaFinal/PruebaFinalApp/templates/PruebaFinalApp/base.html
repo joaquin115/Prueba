@@ -32,13 +32,14 @@
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog"></li>
                                     <li><a class="dropdown-item" id="userdp" href="{%url 'editar_perfil'%}">Perfil</a></li>
                                     <li><a class="dropdown-item" id="userdp" href="{%url 'crear_publicacion'%}">Crear Publicacion</a></li>
+                                    <li><a class="dropdown-item" id="userdp" href="{%url 'ver_publicaciones'%}">Mis Publicaciones</a></li>
                                     <li><a class="dropdown-item" id="userdp" href="{%url 'logout'%}">Logout</a></li>
                                 </ul>
                                 {%else%}
                                 <a class="nav-link dropdown-toggle" id="navbarDropdownBlog" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Ingresar</a>
                                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownBlog">
-                                    <li><a class="dropdown-item" href="{%url 'login'%}">Login</a></li>
-                                    <li><a class="dropdown-item" href="{%url 'registro'%}">Registrarse</a></li>                                    
+                                    <li><a class="dropdown-item" id="userdp" href="{%url 'login'%}">Login</a></li>
+                                    <li><a class="dropdown-item" id="userdp" href="{%url 'registro'%}">Registrarse</a></li>                                    
                                 </ul>
                             </li>
                             {%endif%}

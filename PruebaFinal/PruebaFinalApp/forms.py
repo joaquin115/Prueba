@@ -17,13 +17,13 @@ class UserRegisterForm(UserCreationForm):
 
         help_texts = {k:"" for k in fields}
         
-class UserEditForm(forms.Form): #(UserCreationForm):
+class UserEditForm(UserCreationForm):
 
     email = forms.EmailField(label="Email")  
 
     first_name = forms.CharField(label="Nombre")
     last_name = forms.CharField(label="Apellido")
-    
+
     class Meta:
         model = User
         fields = ['email', 'first_name', 'last_name']

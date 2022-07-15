@@ -1,3 +1,4 @@
+from xmlrpc.client import TRANSPORT_ERROR
 from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
@@ -17,7 +18,7 @@ class UserRegisterForm(UserCreationForm):
 
         help_texts = {k:"" for k in fields}
         
-class UserEditForm(UserCreationForm):
+class UserEditForm(forms.Form):
 
     email = forms.EmailField(label="Email")  
 
@@ -31,9 +32,9 @@ class UserEditForm(UserCreationForm):
         # help_texts = {k:"" for k in fields}
 
 class CrearPublicacion(forms.Form):
-    # imagen = forms.FileField()
+    imagen = forms.ImageField(allow_empty_file=True)
     pais = forms.CharField(max_length=50)
     titulo = forms.CharField(max_length=50)
-    descripcion = forms.CharField(max_length=800)
-    fecha_viaje = forms.DateField()  
+    descripcion = forms.CharField(widget=forms.Textarea())
+    fecha_viaje = forms.DateField()   
     

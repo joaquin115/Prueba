@@ -19,7 +19,7 @@ def inicio(request):
     ultimas = publicaciones[len(publicaciones)-4:len(publicaciones)-1]
     ultima_publicacion = publicaciones[publicaciones.count()-1]
     total_publicaciones = publicaciones.count()
-    
+    #imagenes = Publicaciones.objects.filter()
 
     usuarios = User.objects.all()        
     total_usuarios = usuarios.count()    
@@ -30,9 +30,9 @@ def inicio(request):
 def publicaciones(request):
         return render(request, 'PruebaFinalApp/publicaciones.html', {})
     
-       
- 
     
+
+
 def registro(request):
 
     if request.method == "POST":
@@ -114,10 +114,10 @@ def editar_perfil(request):
     return render (request, 'PruebaFinalApp/editarPerfil.html', {"form":form})
 
 @login_required
-def perfil(request):     
+def perfil(request):      
+    
     return render(request, "PruebaFinalApp/perfil.html",{})
 
-@login_required
 def crear_publicacion(request):
     if request.method == "POST":
         publicacion = CrearPublicacion(request.POST)

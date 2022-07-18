@@ -141,5 +141,9 @@ def crear_publicacion(request):
 def ver_publicaciones(request):
     
     return render(request, "PruebaFinalApp/mis_publicaciones.html", {})
+
+def about_us(request):
+    
+    return render(request, "PruebaFinalApp/about_us.html", {})
     
 

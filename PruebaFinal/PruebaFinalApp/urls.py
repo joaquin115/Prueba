@@ -12,4 +12,5 @@ urlpatterns = [
     path('editarperfil', editar_perfil, name='editar_perfil'),  
     path('crearpublicacion', crear_publicacion, name='crear_publicacion'),
     path('mis_publicaciones', ver_publicaciones, name='ver_publicaciones'),    
+    path('about_us', about_us, name='about_us'),
 ]
